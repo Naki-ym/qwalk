@@ -15,6 +15,8 @@
       <button>画像をアップロード</button>
       <h2 class="form-item">問題の設置場所</h2>
       <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+
+      <p id="latlng">座標：</p>
     </div>
   </div>
   <div class="wrapper">
@@ -25,6 +27,7 @@
   </div>
   
   <script type="text/javascript">
+    var map;
     function initMap() {
       var opts = {
         zoom: 14,
@@ -32,7 +35,13 @@
         streetViewControl: false,
         mapTypeControl: false
       };
-      var map = new google.maps.Map(document.getElementById("map"), opts);
+      map = new google.maps.Map(document.getElementById("map"), opts);
+      map.addListener('drag', dispLatLng);
+    }
+    function dispLatLng(){
+      var latlng = map.getCenter();
+      var str = "座標：" + latlng.lat() + "," + latlng.lng() + "<br>";
+      document.getElementById("latlng").innerHTML = str;
     }
   </script>
   <script async defer
