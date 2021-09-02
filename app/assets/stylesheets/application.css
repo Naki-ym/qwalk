@@ -104,6 +104,25 @@ textarea {
   justify-content: center;
 }
 
+.success-message {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(0, 140, 255);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
+}
+
+.error-message {
+  width: 50%;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(255, 75, 75);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
+}
+
 /* オーバーレイ */
 .overlay {
   display: none;

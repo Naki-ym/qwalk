@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "question" => "question#top"
+  get "question/create" => "question#top"
   get "question/:id" => "question#show"
   get "question/:id/newspot" => "question#newspot"
   get "question/:id/edit" => "question#edit"

@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <% @quest.errors.full_messages.each do |message| %>
+    <div class="error-message">
+      <%= message %>
+    </div>
+  <% end %>
+
   <h1>マイクエスト</h1>
 
   <!-- モーダルを開くボタン -->
@@ -11,9 +17,9 @@
     <%= form_tag("/question/create") do %>
       <div class="form">
         <h2>クエスト名</h2>
-        <textarea name="title"></textarea>
+        <textarea name="title"><%= @quest.title %></textarea>
         <h2>説明文</h2>
-        <textarea name="caption"></textarea>
+        <textarea name="caption"><%= @quest.caption %></textarea>
         <div class="form-buttons">
             <a class="js-close simplebutton">Close</a>
             <input type="submit" value="作成" class="simplebutton">
@@ -24,7 +30,7 @@
 
   <ul>
     <% @quests.each do |quest|%>
-    <li><%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton"}) %></li>
+      <li><%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton"}) %></li>
     <% end %>
   </ul>
 </div>
