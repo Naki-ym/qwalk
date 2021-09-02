@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <h1>問題の追加</h1>
+    <h1>地点の追加</h1>
     <div class="form">
       <h2>表示</h2>
       <p>テキスト</p>
@@ -21,7 +21,7 @@
   </div>
   <div class="wrapper">
     <div class="form-buttons">
-      <button>キャンセル</button>
+      <%= button_to "キャンセル", {controller: 'question', action: 'new'}, {method: :get, class: "simplebutton"} %>
       <button>保存</button>
     </div>
   </div>

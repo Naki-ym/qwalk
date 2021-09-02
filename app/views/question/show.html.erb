@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <h1><%= @quest.title %></h1>
+  <div>
+    <%= @quest.caption %>
+  </div>
+  <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
+</div>
