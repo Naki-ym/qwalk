@@ -1,7 +1,16 @@
 <div class="wrapper">
   <h1><%= @quest.title %></h1>
+
+  <h2>説明</h2>
   <div>
     <%= @quest.caption %>
   </div>
+
+  <h2>地点</h2>
+  <ul>
+    <li>地点１</li>
+  </ul>
+  <%= link_to("地点を追加", "#{@quest.id}/newspot", {class: "simplebutton"}) %>
+
   <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
 </div>

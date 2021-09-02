@@ -11,5 +11,6 @@ class QuestionController < ApplicationController
     redirect_to("/question")
   end
   def newspot
+    @quest = Quest.find_by(id: params[:id])
   end
 end
