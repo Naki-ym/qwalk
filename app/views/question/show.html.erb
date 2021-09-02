@@ -1,16 +1,21 @@
 <div class="wrapper">
   <h1><%= @quest.title %></h1>
 
-  <h2>説明</h2>
+  <h2>説明文</h2>
   <div>
     <%= @quest.caption %>
   </div>
+
+  <%= link_to("クエスト名・説明文の編集", "/question/#{@quest.id}/edit") %> 
 
   <h2>地点</h2>
   <ul>
     <li>地点１</li>
   </ul>
-  <%= link_to("地点を追加", "#{@quest.id}/newspot", {class: "simplebutton"}) %>
+  <%= link_to("地点を追加", "newspot", {class: "simplebutton"}) %>
 
-  <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
+  <div class="buttons">
+    <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
+    <%= button_to "クエストを削除", {controller: 'question', action: 'destroy'}, {method: :post, class: "dangerbutton"} %>
+  </div>
 </div>
