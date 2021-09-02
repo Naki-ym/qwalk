@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
   def top
-    @quests = Quest.all
+    @quests = Quest.all.order(created_at: :desc)
   end
   def show
     @quest = Quest.find_by(id: params[:id])
