@@ -12,7 +12,7 @@
   <ul>
     <li>地点１</li>
   </ul>
-  <%= link_to("地点を追加", "newspot", {class: "simplebutton"}) %>
+  <%= link_to("地点を追加", "/question/#{@quest.id}/newspot", {class: "simplebutton"}) %>
 
   <div class="buttons">
     <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
