@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="error-message">
+      <%= message %>
+    </div>
+  <% end %>
+  
   <h1>Qwalk</h1>
   <p>自分だけのリアル謎解きゲームを作ろう</p>
 
@@ -7,15 +13,27 @@
   <!-- モーダルウィンドウ -->
   <div class="modal-window" data-id="modal1">
     <h2>新規登録</h2>
-    <div class="modal-bottons">
-      <button class="js-close simplebutton">Close</button>
-      <button class="simplebutton">登録</button>
-    </div>
+    <%= form_tag("/users/create") do %>
+      <div class="form">
+        <div class="form-item">
+          <p>ユーザー名</p>
+          <input name="name" value="<%= @user.name %>">
+        </div>
+        <div class="form-item">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+        </div>
+        <div class="bottons">
+          <a class="js-close simplebutton">Close</a>
+          <input type="submit" value="新規登録" class="simplebutton">
+        </div>
+      </div>
+    <% end %>
   </div>
   <div class="modal-window" data-id="modal2">
     <h2>サインイン</h2>
-    <div class="modal-bottons">
-      <button class="js-close simplebutton">Close</button>
+    <div class="bottons">
+      <a class="js-close simplebutton">Close</a>
       <button class="simplebutton">サインイン</button>
     </div>
   </div>

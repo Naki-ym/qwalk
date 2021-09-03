@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'users#index'
   get "users" => "users#userlist"
   get "users/:id" => "users#show"
+  post "users/create" => "users#create"
   
   get "question" => "question#top"
   get "question/create" => "question#top"
