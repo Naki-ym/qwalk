@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <h1><%= @user.name %></h1>
+  <p><%= @user.email %></p>
+
+  <%= button_to "戻る", {controller: 'users', action: 'userlist'}, {method: :get, class: "simplebutton"} %>
+</div>

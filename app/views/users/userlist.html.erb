@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <h1>ユーザー一覧</h1>
+  <ul>
+    <% @users.each do |user|%>
+      <li><%= link_to(user.name, "/users/#{user.id}", {class: "textbutton"}) %></li>
+    <% end %>
+  </ul>
+</div>
