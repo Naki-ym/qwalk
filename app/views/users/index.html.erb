@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <h1>Qwalk</h1>
+  <p>自分だけのリアル謎解きゲームを作ろう</p>
+
+  <!-- オーバーレイ -->
+  <div id="overlay" class="overlay"></div>
+  <!-- モーダルウィンドウ -->
+  <div class="modal-window" data-id="modal1">
+    <h2>新規登録</h2>
+    <div class="modal-bottons">
+      <button class="js-close">Close</button>
+      <button>SignIn</button>
+    </div>
+  </div>
+  <div class="modal-window" data-id="modal2">
+    <h2>サインイン</h2>
+    <div class="modal-bottons">
+      <button class="js-close">Close</button>
+      <button>LogIn</button>
+    </div>
+  </div>
+  <!-- モーダルを開くボタン -->
+  <div class="top-buttons">
+    <button class="js-open" data-id="1">SignUp</button>
+    <button class="js-open" data-id="2">SignIn</button>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('.js-open').click(function () {
+      var id = $(this).data('id'); // 何番目のモーダルウィンドウか
+      $('#overlay, .modal-window[data-id="modal' + id + '"]').fadeIn();
+    });
+
+    $('.js-close, #overlay').click(function () {
+      $('#overlay, .modal-window').fadeOut();
+    });
+  });
+</script>
