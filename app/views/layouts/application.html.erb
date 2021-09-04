@@ -22,7 +22,7 @@
           <% if session[:user_id] %>
             <li><%= link_to("ユーザー一覧", "users") %></li>
             <li><%= link_to("クエスト", "question") %></li>
-            <li><%= session[:user_id] %></li>
+            <li><%= link_to(@current_user.name, "/users/#{@current_user.id}") %></li>
             <li><%= link_to("ログアウト", "/logout", method: :post) %></li>
           <% else %>
             <li><%= link_to("ログイン", "/login") %></li>
