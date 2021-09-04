@@ -28,7 +28,7 @@
     <% end %>
   </div>
 
-  <ul>
+  <ul class="simple-list">
     <% @quests.each do |quest|%>
       <li><%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton"}) %></li>
     <% end %>

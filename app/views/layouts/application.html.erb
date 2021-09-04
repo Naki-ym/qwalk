@@ -11,9 +11,21 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-content">
+        <%= link_to("Qwalk", "/", {class: "header-logo"}) %>
+        <ul class="header-list">
+          <li><%= link_to("ユーザー一覧", "users") %></li>
+          <li><%= link_to("クエスト", "question") %></li>
+        </ul>
+      </div>
+    </header>
+
     <% if flash[:notice] %>
-      <div class="success-message">
-        <%= flash[:notice] %>
+      <div class="wrapper">
+        <div class="success-message">
+          <%= flash[:notice] %>
+        </div>
       </div>
     <% end %>
 
