@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def index
     @user = User.new
-    @loginuser = User.new
   end
   def userlist
     @users = User.all

@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <%= form_tag("/spots/create") do %>
+    <h1>地点の追加</h1>
+    <p><%= @quest.id%></p>
+    <div class="form">
+      <h2>表示</h2>
+      <p>テキスト</p>
+      <textarea name="q_text"><%= @spot.q_text %></textarea>
+      <p>画像</p>
+      <button>画像をアップロード</button>
+      <h2>答え</h2>
+      <textarea name="answer"><%= @spot.answer %></textarea>
+      <h2>正解時に表示</h2>
+      <p>テキスト</p>
+      <textarea name="a_text"><%= @spot.a_text %></textarea>
+      <p>正解時に表示する画像</p>
+      <button>画像をアップロード</button>
+      <h2 class="form-item">問題の設置場所</h2>
+      <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+      <p id="latlng">座標：</p>
+      <div class="buttons">
+        <%= link_to("キャンセル", "/question/#{@quest.id}", {class: "simplebutton"}) %>
+        <input type="submit" value="保存" class="simplebutton">
+      </div>
+    </div>
+  <% end %>
+  
+</div>
+
+<script type="text/javascript">
+  var map;
+  function initMap() {
+    var opts = {
+      zoom: 14,
+      center: new google.maps.LatLng(35.6810208016824, 139.7674398589082),
+      streetViewControl: false,
+      mapTypeControl: false
+    };
+    map = new google.maps.Map(document.getElementById("map"), opts);
+    map.addListener('drag', dispLatLng);
+  }
+  function dispLatLng(){
+    var latlng = map.getCenter();
+    var str = "座標：" + latlng.lat() + "," + latlng.lng() + "<br>";
+    document.getElementById("latlng").innerHTML = str;
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
