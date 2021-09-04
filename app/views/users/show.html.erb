@@ -2,7 +2,10 @@
   <img src="<%="/user_images/#{@user.image_name}"%>" class="icon">
   <h1><%= @user.name %></h1>
   <p><%= @user.email %></p>
-  <%= link_to("ユーザーデータの編集", "/users/#{@user.id}/edit", class: "textbutton") %> 
+
+  <% if @user.id == @current_user.id %>
+    <%= link_to("ユーザーデータの編集", "/users/#{@user.id}/edit", class: "textbutton") %> 
+  <% end %>
 
   <%= button_to "戻る", {controller: 'users', action: 'userlist'}, {method: :get, class: "simplebutton"} %>
 </div>

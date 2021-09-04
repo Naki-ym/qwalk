@@ -1,4 +1,7 @@
 class QuestionController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user, {only: [:create, :newspot, :edit, :update, :destroy]}
+
   def top
     @quest = Quest.new
     @quests = Quest.all.order(created_at: :desc)
