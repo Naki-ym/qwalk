@@ -4,55 +4,22 @@
       <%= message %>
     </div>
   <% end %>
-  
-  <h1>Qwalk</h1>
-  <p>自分だけのリアル謎解きゲームを作ろう</p>
 
-  <!-- オーバーレイ -->
-  <div id="overlay" class="overlay"></div>
-  <!-- モーダルウィンドウ -->
-  <div class="modal-window" data-id="modal1">
-    <h2>新規登録</h2>
-    <%= form_tag("/users/create") do %>
-      <div class="form">
-        <div class="form-item">
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-        </div>
-        <div class="form-item">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
-        </div>
-        <div class="bottons">
-          <a class="js-close simplebutton">Close</a>
-          <input type="submit" value="新規登録" class="simplebutton">
-        </div>
+  <h1>新規登録</h1>
+  <%= form_tag("/users/create") do %>
+    <div class="form">
+      <div class="form-item">
+        <p>ユーザー名</p>
+        <input name="name" value="<%= @user.name %>">
       </div>
-    <% end %>
-  </div>
-  <div class="modal-window" data-id="modal2">
-    <h2>サインイン</h2>
-    <div class="bottons">
-      <a class="js-close simplebutton">Close</a>
-      <button class="simplebutton">サインイン</button>
+      <div class="form-item">
+        <p>メールアドレス</p>
+        <input name="email" value="<%= @user.email %>">
+      </div>
+      <div class="form-item">
+        <p>パスワード</p>
+        <input name="password" type="password">
+      </div>
     </div>
-  </div>
-  <!-- モーダルを開くボタン -->
-  <div class="top-buttons">
-    <button class="js-open simplebutton" data-id="1">新規登録</button>
-    <button class="js-open simplebutton" data-id="2">ログイン</button>
-  </div>
-</div>
-
-<script>
-  $(function () {
-    $('.js-open').click(function () {
-      var id = $(this).data('id'); // 何番目のモーダルウィンドウか
-      $('#overlay, .modal-window[data-id="modal' + id + '"]').fadeIn();
-    });
-
-    $('.js-close, #overlay').click(function () {
-      $('#overlay, .modal-window').fadeOut();
-    });
-  });
-</script>
+    <input type="submit" value="新規登録" class="simplebutton">
+  <% end %>

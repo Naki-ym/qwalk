@@ -13,10 +13,21 @@
   <body>
     <header>
       <div class="header-content">
-        <%= link_to("Qwalk", "/", {class: "header-logo"}) %>
+        <% if session[:user_id] %>
+          <%= link_to("Qwalk", "/question", {class: "header-logo"}) %>
+        <% else %>
+          <%= link_to("Qwalk", "/", {class: "header-logo"}) %>
+        <% end %>
         <ul class="header-list">
-          <li><%= link_to("ユーザー一覧", "users") %></li>
-          <li><%= link_to("クエスト", "question") %></li>
+          <% if session[:user_id] %>
+            <li><%= link_to("ユーザー一覧", "users") %></li>
+            <li><%= link_to("クエスト", "question") %></li>
+            <li><%= session[:user_id] %></li>
+            <li><%= link_to("ログアウト", "/logout", method: :post) %></li>
+          <% else %>
+            <li><%= link_to("ログイン", "/login") %></li>
+            <li><%= link_to("新規登録", "/") %></li>
+          <% end %>
         </ul>
       </div>
     </header>

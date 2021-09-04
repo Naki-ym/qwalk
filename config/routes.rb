@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
   post "users/:id/update" => "users#update"
 
+  get "login" => "users#login_form"
+  post "login" => "users#login"
+  post "logout" => "users#logout"
+
   get "question" => "question#top"
   get "question/create" => "question#top"
   get "question/:id" => "question#show"
