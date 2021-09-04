@@ -10,16 +10,20 @@
     <%= @quest.caption %>
   </div>
 
-  <%= link_to("クエスト名・説明文の編集", "/question/#{@quest.id}/edit", class: "textbutton") %> 
+  <% if @quest.user_id == @current_user.id %>
+    <div class="vartical-set">
+      <%= link_to("クエスト名・説明文の編集", "/question/#{@quest.id}/edit", class: "textbutton") %>
+      <%= link_to("クエストを削除", "/question/#{@quest.id}/destroy", method: :post, class: "dangerbutton") %>
+    </div> 
+  <% end %>
 
   <h2>地点</h2>
   <ul class="simple-list">
     <li>地点１</li>
   </ul>
-  <%= link_to("地点を追加", "/question/#{@quest.id}/newspot", {class: "simplebutton"}) %>
+  <% if @quest.user_id == @current_user.id %>
+    <%= link_to("地点を追加", "/question/#{@quest.id}/newspot", {class: "simplebutton"}) %>
+  <% end %>
 
-  <div class="buttons">
-    <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
-    <%= button_to "クエストを削除", {controller: 'question', action: 'destroy'}, {method: :post, class: "dangerbutton"} %>
-  </div>
+  <%= button_to "戻る", {controller: 'question', action: 'top'}, {method: :get, class: "simplebutton"} %>
 </div>

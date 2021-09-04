@@ -15,10 +15,14 @@
  */
 
 .wrapper {
-  padding-top: 80px;
   width: 50%;
   margin: 0 auto;
   text-align: center;
+}
+
+.vartical-set {
+  display: flex;
+  flex-flow: column;
 }
 
 header {
@@ -28,6 +32,10 @@ header {
   height: 60px;
   margin: 0;
   background-color: rgba(255, 255, 255, 0);
+}
+
+.under-header {
+  padding-top: 70px;
 }
 
 .header-content {
@@ -85,11 +93,6 @@ header {
   position: relative;
 }
 
-.quest-list-block {
-  display: flex;
-  flex-flow: column;
-}
-
 .quest-list-creater {
   position: absolute;
   right: 0;
@@ -137,6 +140,16 @@ header {
   opacity: 0.7;
 }
 
+.dangerbutton {
+  color: rgb(100, 100, 100);
+  text-decoration: none;
+  cursor : pointer;
+}
+
+.dangerbutton:hover {
+  color: rgb(255, 60, 60);
+}
+
 .simplebutton {
   margin: 10px;
   padding: 5px 15px;
@@ -153,24 +166,6 @@ header {
 .simplebutton:hover {
   color: #fff;
   background: #000;
-}
-
-.dangerbutton {
-  margin: 10px;
-  padding: 5px 15px;
-  color: black;
-  text-decoration: none;
-  border: 3px solid #000;
-  font-size: 20px;
-  border-radius: 0;
-  background: #fff;
-  transition: 0.5s;
-  cursor : pointer;
-}
-
-.dangerbutton:hover {
-  color: #fff;
-  background: rgb(130, 0, 0);
 }
 
 .form {

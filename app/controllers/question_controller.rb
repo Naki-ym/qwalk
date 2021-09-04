@@ -1,6 +1,8 @@
 class QuestionController < ApplicationController
   #ログインしていないユーザーがアクセスできない
   before_action :authenticate_user, {only: [:create, :newspot, :edit, :update, :destroy]}
+  #ログインしているユーザーと権限を持つユーザーが異なるときアクセスできない
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def top
     @quest = Quest.new
@@ -42,5 +44,13 @@ class QuestionController < ApplicationController
     @quest.destroy
     flash[:notice] = "クエストを削除しました"
     redirect_to("/question")
+  end
+
+  def ensure_correct_user
+    @quest = Quest.find_by(id: params[:id])
+    if @quest.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/question")
+    end
   end
 end

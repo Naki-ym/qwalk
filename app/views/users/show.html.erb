@@ -10,7 +10,7 @@
   <ul class="simple-list">
     <% @user.quests.each do |quest| %>
       <li>
-        <div class="quest-list-block">
+        <div class="vartical-set">
           <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
           <p class="quest-list-caption"><%= quest.caption %></p>
         </div>
