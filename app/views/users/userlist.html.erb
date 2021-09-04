@@ -2,7 +2,10 @@
   <h1>ユーザー一覧</h1>
   <ul>
     <% @users.each do |user|%>
-      <li><%= link_to(user.name, "/users/#{user.id}", {class: "textbutton"}) %></li>
+      <li class="user-list">
+        <img src="<%="/user_images/#{user.image_name}"%>", class="list-icon">
+        <%= link_to(user.name, "/users/#{user.id}", {class: "textbutton user-name"}) %>
+      </li>
     <% end %>
   </ul>
 </div>

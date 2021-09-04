@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root 'users#index'
   get "users" => "users#userlist"
   get "users/:id" => "users#show"
+  get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
-  
+  post "users/:id/update" => "users#update"
+
   get "question" => "question#top"
   get "question/create" => "question#top"
   get "question/:id" => "question#show"

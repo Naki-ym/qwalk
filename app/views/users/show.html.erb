@@ -1,6 +1,8 @@
 <div class="wrapper">
+  <img src="<%="/user_images/#{@user.image_name}"%>">
   <h1><%= @user.name %></h1>
   <p><%= @user.email %></p>
+  <%= link_to("ユーザーデータの編集", "/users/#{@user.id}/edit", class: "textbutton") %> 
 
   <%= button_to "戻る", {controller: 'users', action: 'userlist'}, {method: :get, class: "simplebutton"} %>
 </div>

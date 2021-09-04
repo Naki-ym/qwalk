@@ -35,6 +35,23 @@ li {
   font-size: 17px;
 }
 
+.user-list {
+  display: flex;
+  padding: 10px;
+}
+
+.list-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.user-name {
+  margin: 20px 30px 10px;
+  font-size: 20px;
+}
+
 .textbutton {
   color: rgb(100, 100, 100);
   text-decoration: none;
