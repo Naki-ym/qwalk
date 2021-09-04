@@ -16,7 +16,7 @@
         <% if session[:user_id] %>
           <%= link_to("Qwalk", "/question", {class: "header-logo"}) %>
         <% else %>
-          <%= link_to("Qwalk", "/", {class: "header-logo"}) %>
+          <%= link_to("Qwalk", "/login", {class: "header-logo"}) %>
         <% end %>
         <ul class="header-list">
           <% if session[:user_id] %>

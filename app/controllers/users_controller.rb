@@ -45,6 +45,13 @@ class UsersController < ApplicationController
       render("users/edit")
     end
   end
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "ユーザーを削除しました"
+    redirect_to("/login")
+  end
   def login_form
     @user = User.new
   end
