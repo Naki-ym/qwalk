@@ -45,11 +45,20 @@ li {
   height: 60px;
   border-radius: 50%;
   box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
 }
 
 .user-name {
   margin: 20px 30px 10px;
   font-size: 20px;
+}
+
+.icon {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
 }
 
 .textbutton {
