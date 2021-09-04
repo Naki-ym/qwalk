@@ -8,9 +8,10 @@ class QuestionController < ApplicationController
   end
   def show
     @quest = Quest.find_by(id: params[:id])
+    @user = @quest.user
   end
   def create
-    @quest = Quest.new(title: params[:title], caption: params[:caption])
+    @quest = Quest.new(title: params[:title], caption: params[:caption], user_id: @current_user.id)
     if @quest.save
       flash[:notice] = "クエストを作成しました"
       redirect_to("/question")

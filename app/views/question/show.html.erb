@@ -1,5 +1,9 @@
 <div class="wrapper">
   <h1><%= @quest.title %></h1>
+  <div class="creater-box">
+    <img src="<%="/user_images/#{@user.image_name}"%>" class="creater-icon">
+    <%= link_to(@user.name, "/users/#{@user.id}", {class: "creater-name"}) %>
+  </div>
 
   <h2>説明文</h2>
   <div>

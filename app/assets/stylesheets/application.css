@@ -47,9 +47,7 @@ header {
 
 .header-list {
   line-height: 60px;
-  padding-right: 80px;
   font-size: 20px;
-  padding-top: 20px;
 }
 
 .header-list li {
@@ -76,9 +74,36 @@ header {
   font-size: 17px;
 }
 
-.user-list{
+.user-list {
   display: flex;
   padding: 10px;
+}
+
+.quest-list {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.quest-list-block {
+  display: flex;
+  flex-flow: column;
+}
+
+.quest-list-creater {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+.quest-list-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.quest-list-caption {
+  font-size: 20px;
 }
 
 .list-icon {
