@@ -21,6 +21,16 @@
   <ul class="simple-list">
     <li>地点１</li>
   </ul>
+  <ul class="simple-list">
+    <% @spots.each do |spot| %>
+        <li>
+          <div class="vartical-set">
+            
+            <p class="quest-list-caption"><%= spot.id %></p>
+          </div>
+        </li>
+      <% end %>
+  </ul>
   <% if @quest.user_id == @current_user.id %>
     <%= link_to("地点を追加", "/question/#{@quest.id}/newspot", {class: "simplebutton"}) %>
   <% end %>
