@@ -1,6 +1,7 @@
 <div class="wrapper">
-  <%= form_tag("/spots/create") do %>
+  <%= form_tag("/spots/#{@spot.id}/update") do %>
     <h1>地点の追加</h1>
+    <p><%= @quest.id%></p>
     <div class="form">
       <h2>表示</h2>
       <p>テキスト</p>
@@ -16,8 +17,8 @@
       <button>画像をアップロード</button>
       <h2 class="form-item">問題の設置場所</h2>
       <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
-      <textarea id="lat" name="lat"></textarea>
-      <textarea id="lng" name="lng"></textarea>
+      <textarea id="lat" name="lat"><%= @spot.lat %></textarea>
+      <textarea id="lng" name="lng"><%= @spot.lng %></textarea>
       <div class="buttons">
         <%= link_to("キャンセル", "/question/#{@quest.id}", {class: "simplebutton"}) %>
         <input type="submit" value="保存" class="simplebutton">
@@ -28,11 +29,13 @@
 </div>
 
 <script type="text/javascript">
+  var lat = '<%== JSON.dump(@spot.lat) %>';
+  var lng = '<%== JSON.dump(@spot.lng) %>';
   var map;
   function initMap() {
     var opts = {
       zoom: 14,
-      center: new google.maps.LatLng(35.6810208016824, 139.7674398589082),
+      center: new google.maps.LatLng(lat, lng),
       streetViewControl: false,
       mapTypeControl: false
     };

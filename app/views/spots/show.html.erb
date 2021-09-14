@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <h2>表示</h2>
+  <h3>テキスト</h3>
+  <p><%= @spot.q_text %></p>
+  <h2>答え</h2>
+  <p><%= @spot.answer %></p>
+  <h2>正解時に表示</h2>
+  <h3>テキスト</h3>
+  <p><%= @spot.a_text %></p>
+  <h2 class="form-item">問題の設置場所</h2>
+  <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+  
+  <% if @user.id == @current_user.id %>
+    <%= link_to("地点の内容を編集", "/spots/#{@spot.id}/edit", class: "textbutton") %>
+    <%= link_to("地点を削除", "/spots/#{@spot.id}/destroy", method: :post, class: "dangerbutton") %>
+  <% end %>
+
+  <div class="buttons">
+    <%= link_to("キャンセル", "/question/#{@spot.quest_id}", {class: "simplebutton"}) %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lat = '<%== JSON.dump(@spot.lat) %>';
+  var lng = '<%== JSON.dump(@spot.lng) %>';
+  var map;
+  function initMap() {
+    var opts = {
+      zoom: 14,
+      center: new google.maps.LatLng(lat, lng),
+      streetViewControl: false,
+      mapTypeControl: false
+    };
+    map = new google.maps.Map(document.getElementById("map"), opts);
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>

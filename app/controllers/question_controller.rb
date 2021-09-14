@@ -10,8 +10,8 @@ class QuestionController < ApplicationController
   end
   def show
     @quest = Quest.find_by(id: params[:id])
+    @spots = Spot.where(quest_id: @quest.id)
     @user = @quest.user
-    @spots = Spot.where(quest_id: @user.id)
   end
   def create
     @quest = Quest.new(title: params[:title], caption: params[:caption], user_id: @current_user.id)

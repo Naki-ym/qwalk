@@ -19,14 +19,10 @@
 
   <h2>地点</h2>
   <ul class="simple-list">
-    <li>地点１</li>
-  </ul>
-  <ul class="simple-list">
     <% @spots.each do |spot| %>
         <li>
           <div class="vartical-set">
-            
-            <p class="quest-list-caption"><%= spot.id %></p>
+            <%= link_to(spot.q_text, "/spots/#{spot.id}", {class: "textbutton quest-list-title"}) %>
           </div>
         </li>
       <% end %>

@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   post "question/:id/update" => "question#update"
   post "question/:id/destroy" => "question#destroy"
 
+  get "spots/:id" => "spots#show"
+  get "spots/:id/edit" => "spots#edit"
   post "spots/create" => "spots#create"
+  post "spots/:id/update" => "spots#update"
+  post "spots/:id/destroy" => "spots#destroy"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,4 +3,6 @@ class Spot < ApplicationRecord
   validates :q_text, {presence: true, length: {maximum: 500}}
   validates :answer, {presence: true, length: {maximum: 30}}
   validates :a_text, {presence: true, length: {maximum: 500}}
+  validates :lat, {presence: true}
+  validates :lng, {presence: true}
 end
