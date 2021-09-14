@@ -206,6 +206,7 @@ textarea {
 
 .error-message {
   width: 50vw;
+  margin: 0 auto;
   margin-bottom: 10px;
   padding: 10px;
   color: white;
