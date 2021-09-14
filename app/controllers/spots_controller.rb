@@ -1,6 +1,8 @@
 class SpotsController < ApplicationController
   def new
     @spot = Spot.new
+    @spot.lat = 35.6810208016824
+    @spot.lng = 139.7674398589082
     @quest = Quest.find_by(id: params[:id])
     @quest_id = @quest.id
     session[:current_quest] = @quest.id
