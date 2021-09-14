@@ -21,7 +21,7 @@
         <ul class="header-list">
           <% if session[:user_id] %>
             <li><%= link_to("ユーザー一覧", "/users") %></li>
-            <li><%= link_to("マイクエスト", "/question") %></li>
+            <li><%= link_to("クエスト", "/question") %></li>
             <li><%= link_to(@current_user.name, "/users/#{@current_user.id}") %></li>
             <li class="dangerbutton"><%= link_to("ログアウト", "/logout", method: :post) %></li>
           <% else %>
