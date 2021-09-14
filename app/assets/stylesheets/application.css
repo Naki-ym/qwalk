@@ -238,3 +238,7 @@ textarea {
   z-index: 11;
   padding: 20px;
 }
+
+.invisible {
+  display:none;
+}

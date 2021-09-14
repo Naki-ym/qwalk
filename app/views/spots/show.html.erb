@@ -32,6 +32,13 @@
       mapTypeControl: false
     };
     map = new google.maps.Map(document.getElementById("map"), opts);
+
+    var spotLatlng = new google.maps.LatLng(lat, lng);
+    var marker = new google.maps.Marker({
+      position: spotLatlng,
+      map: map,
+      title:"Here!"
+    });
   }
 </script>
 <script async defer

@@ -16,8 +16,8 @@
       <button>画像をアップロード</button>
       <h2 class="form-item">問題の設置場所</h2>
       <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
-      <textarea id="lat" name="lat"><%= @spot.lat %></textarea>
-      <textarea id="lng" name="lng"><%= @spot.lng %></textarea>
+      <textarea id="lat" name="lat" class="invisible"><%= @spot.lat %></textarea>
+      <textarea id="lng" name="lng" class="invisible"><%= @spot.lng %></textarea>
       <div class="buttons">
         <%= link_to("キャンセル", "/question/#{@quest.id}", {class: "simplebutton"}) %>
         <input type="submit" value="保存" class="simplebutton">
