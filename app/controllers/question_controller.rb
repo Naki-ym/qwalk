@@ -42,6 +42,8 @@ class QuestionController < ApplicationController
   end
   def destroy
     @quest = Quest.find_by(id: params[:id])
+    @spots = Spot.where(quest_id: @quest.id)
+    @spots.destroy_all
     @quest.destroy
     flash[:notice] = "クエストを削除しました"
     redirect_to("/question")

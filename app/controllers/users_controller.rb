@@ -46,7 +46,12 @@ class UsersController < ApplicationController
   end
   def destroy
     @user = User.find_by(id: params[:id])
-    @user.quests.destroy_all
+    @quests = @user.quests
+    @quests.each do |quest|
+      @spots = Spot.where(quest_id: quest.id)
+      @spots.destroy_all
+    end
+    @quests.destroy_all
     @user.destroy
     session[:user_id] = nil
     flash[:notice] = "ユーザーを削除しました"
