@@ -82,17 +82,6 @@ class QuestionController < ApplicationController
     flash[:notice] = "クエストを非公開にしました"
     redirect_to("/mypage")
   end
-  def play
-    if PlayQuest.find_by(user_id: @current_user)
-      @play = PlayQuest.find_by(user_id: @current_user)
-      @play.quest_id = params[:id].to_i
-    else
-      @play = PlayQuest.new(user_id: @current_user.id, quest_id: params[:id])
-    end
-    @play.save
-    flash[:notice] = "このクエストに挑戦します"
-    redirect_to("/mypage")
-  end
 
   def ensure_correct_user
     @quest = Quest.find_by(id: params[:id])

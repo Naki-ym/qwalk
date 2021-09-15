@@ -34,7 +34,7 @@
       <%= button_to "公開する", {controller: 'question', action: 'publish'}, {method: :post, class: "simplebutton"} %>
     <% end %>
   <% else %>
-    <%= button_to "挑戦する", {controller: 'question', action: 'play'}, {method: :post, class: "simplebutton"} %>
+    <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
   <% end %>
 
 

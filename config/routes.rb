@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post "question/:id/destroy" => "question#destroy"
   post "question/:id/publish" => "question#publish"
   post "question/:id/unpublish" => "question#unpublish"
-  post "question/:id/play" => "question#play"
+  post "question/:id/play" => "play_quest#play"
 
   get "spots/:id" => "spots#show"
   get "spots/:id/edit" => "spots#edit"
