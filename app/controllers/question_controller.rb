@@ -6,7 +6,7 @@ class QuestionController < ApplicationController
 
   def top
     @quest = Quest.new
-    @quests = Quest.all.order(created_at: :desc)
+    @quests = Quest.where(publish: true).order(created_at: :desc)
   end
 
   def mypage
@@ -52,6 +52,20 @@ class QuestionController < ApplicationController
     @spots.destroy_all
     @quest.destroy
     flash[:notice] = "クエストを削除しました"
+    redirect_to("/question")
+  end
+  def publish
+    @quest = Quest.find_by(id: params[:id])
+    @quest.publish = true
+    @quest.save
+    flash[:notice] = "クエストを公開しました"
+    redirect_to("/question")
+  end
+  def unpublish
+    @quest = Quest.find_by(id: params[:id])
+    @quest.publish = false
+    @quest.save
+    flash[:notice] = "クエストを非公開にしました"
     redirect_to("/question")
   end
 

@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :email, {presence: true, uniqueness: true}
 
   def quests
-    return Quest.where(user_id: self.id)
+    return Quest.where(user_id: self.id, publish: true)
   end
 end
