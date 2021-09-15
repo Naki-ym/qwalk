@@ -8,6 +8,12 @@ class QuestionController < ApplicationController
     @quest = Quest.new
     @quests = Quest.all.order(created_at: :desc)
   end
+
+  def mypage
+    @quest = Quest.new
+    @quests = Quest.where(user_id: @current_user.id).order(created_at: :desc)
+  end
+
   def show
     @quest = Quest.find_by(id: params[:id])
     @spots = Spot.where(quest_id: @quest.id)
@@ -17,10 +23,10 @@ class QuestionController < ApplicationController
     @quest = Quest.new(title: params[:title], caption: params[:caption], user_id: @current_user.id)
     if @quest.save
       flash[:notice] = "クエストを作成しました"
-      redirect_to("/question")
+      redirect_to("/mypage")
     else
       @quests = Quest.all.order(created_at: :desc)
-      render("question/top")
+      render("question/mypage")
     end
   end
   def newspot

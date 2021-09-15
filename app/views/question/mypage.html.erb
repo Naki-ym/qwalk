@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <h1>マイクエスト</h1>
+  <h2>公開中</h2>
+
+  <!-- モーダルを開くボタン -->
+  <button class="js-open simplebutton">クエストを作る</button>
+
+  <!-- オーバーレイ -->
+  <div id="overlay" class="overlay"></div>
+  <!-- モーダルウィンドウ -->
+  <div class="modal-window">
+    <%= form_tag("/question/create") do %>
+      <div class="form">
+        <h2>クエスト名</h2>
+        <textarea name="title"><%= @quest.title %></textarea>
+        <h2>説明文</h2>
+        <textarea name="caption"><%= @quest.caption %></textarea>
+        <div class="form-buttons">
+            <a class="js-close simplebutton">Close</a>
+            <input type="submit" value="作成" class="simplebutton">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @quests %>
+    <ul class="simple-list">
+      <% @quests.each do |quest|%>
+        <li class="quest-list">
+          <div class="quest-list-block">
+            <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
+            <p class="quest-list-caption"><%= quest.caption %></p>
+          </div>
+          <div class="quest-list-creater">
+            <img src="<%= "/user_images/#{quest.user.image_name}" %>" class="creater-icon">
+            <%= link_to(quest.user.name, "/users/#{quest.user.id}", {class: "creater-name"}) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>公開しているクエストはありません。</p>
+  <% end %>
+
+  <h2>未公開</h2>
+  <p>未公開のクエストはありません。</p>
+  <h2>受注</h2>
+  <p>受注しているクエストはありません。</p>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('.js-open').click(function () {
+      $('#overlay, .modal-window').fadeIn();
+    });
+
+    $('.js-close, #overlay').click(function () {
+      $('#overlay, .modal-window').fadeOut();
+    });
+  });
+</script>

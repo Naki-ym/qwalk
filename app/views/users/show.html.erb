@@ -1,23 +1,28 @@
 <div class="wrapper">
   <img src="<%="/user_images/#{@user.image_name}"%>" class="icon">
   <h1><%= @user.name %></h1>
-  <ul><%= @user.email %></p>
 
   <% if @user.id == @current_user.id %>
+    <p><%= @user.email %></p>
     <%= link_to("ユーザーデータの編集", "/users/#{@user.id}/edit", class: "textbutton") %>
     <%= link_to("ユーザーを削除", "/users/#{@user.id}/destroy", method: :post, class: "dangerbutton") %>
+  <% else %>
+    <ul class="simple-list">
+      <% @user.quests.each do |quest| %>
+        <li>
+          <div class="vartical-set">
+            <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
+            <p class="quest-list-caption"><%= quest.caption %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 
-  <ul class="simple-list">
-    <% @user.quests.each do |quest| %>
-      <li>
-        <div class="vartical-set">
-          <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
-          <p class="quest-list-caption"><%= quest.caption %></p>
-        </div>
-      </li>
+  <div class="buttons">
+    <%= button_to "戻る", {controller: 'users', action: 'userlist'}, {method: :get, class: "simplebutton"} %>
+    <% if @user.id == @current_user.id %>
+      <%= button_to "ログアウト", {controller: 'users', action: 'logout'}, {method: :post, class: "simplebutton"} %>
     <% end %>
-  </ul>
-
-  <%= button_to "戻る", {controller: 'users', action: 'userlist'}, {method: :get, class: "simplebutton"} %>
+  </div>
 </div>

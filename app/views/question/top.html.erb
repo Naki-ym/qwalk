@@ -1,27 +1,5 @@
 <div class="wrapper">
-  <h1>マイクエスト</h1>
-
-  <!-- モーダルを開くボタン -->
-  <button class="js-open simplebutton">クエストを作る</button>
-
-  <!-- オーバーレイ -->
-  <div id="overlay" class="overlay"></div>
-  <!-- モーダルウィンドウ -->
-  <div class="modal-window">
-    <%= form_tag("/question/create") do %>
-      <div class="form">
-        <h2>クエスト名</h2>
-        <textarea name="title"><%= @quest.title %></textarea>
-        <h2>説明文</h2>
-        <textarea name="caption"><%= @quest.caption %></textarea>
-        <div class="form-buttons">
-            <a class="js-close simplebutton">Close</a>
-            <input type="submit" value="作成" class="simplebutton">
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+  <h1>クエストを探す</h1>
   <ul class="simple-list">
     <% @quests.each do |quest|%>
       <li class="quest-list">
@@ -37,15 +15,3 @@
     <% end %>
   </ul>
 </div>
-
-<script type="text/javascript">
-  $(function () {
-    $('.js-open').click(function () {
-      $('#overlay, .modal-window').fadeIn();
-    });
-
-    $('.js-close, #overlay').click(function () {
-      $('#overlay, .modal-window').fadeOut();
-    });
-  });
-</script>
