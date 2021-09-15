@@ -56,17 +56,24 @@ class QuestionController < ApplicationController
   end
   def publish
     @quest = Quest.find_by(id: params[:id])
-    @quest.publish = true
-    @quest.save
-    flash[:notice] = "クエストを公開しました"
-    redirect_to("/question")
+    @spots = Spot.find_by(quest_id: @quest.id)
+    if @spots == nil
+      @user = @quest.user
+      @error_message = "地点を追加してください"
+      render("question/show")
+    else
+      @quest.publish = true
+      @quest.save
+      flash[:notice] = "クエストを公開しました"
+      redirect_to("/question")
+    end
   end
   def unpublish
     @quest = Quest.find_by(id: params[:id])
     @quest.publish = false
     @quest.save
     flash[:notice] = "クエストを非公開にしました"
-    redirect_to("/question")
+    redirect_to("/mypage")
   end
 
   def ensure_correct_user

@@ -17,12 +17,14 @@
     </div> 
     <h2>地点</h2>
     <ul class="simple-list">
-      <% @spots.each do |spot| %>
-        <li>
-          <div class="vartical-set">
-            <%= link_to(spot.q_text, "/spots/#{spot.id}", {class: "textbutton quest-list-title"}) %>
-          </div>
-        </li>
+      <% if @spots %>
+        <% @spots.each do |spot| %>
+          <li>
+            <div class="vartical-set">
+              <%= link_to(spot.q_text, "/spots/#{spot.id}", {class: "textbutton quest-list-title"}) %>
+            </div>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     <%= link_to("地点を追加", "/question/#{@quest.id}/newspot", {class: "simplebutton"}) %>
