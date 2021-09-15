@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "question/:id/publish" => "question#publish"
   post "question/:id/unpublish" => "question#unpublish"
   post "question/:id/play" => "play_quest#play"
+  post "question/:id/play/destroy" => "play_quest#destroy"
 
   get "spots/:id" => "spots#show"
   get "spots/:id/edit" => "spots#edit"

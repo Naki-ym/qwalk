@@ -55,16 +55,14 @@
   <% end %>
 
   <h2>受注</h2>
-  <% if @play_quests.size != 0 %>
+  <% if @play_quest %>
     <ul class="simple-list">
-      <% @play_quests.each do |quest|%>
-        <li class="quest-list">
-          <div class="quest-list-block">
-            <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
-            <p class="quest-list-caption"><%= quest.caption %></p>
-          </div>
-        </li>
-      <% end %>
+      <li class="quest-list">
+        <div class="quest-list-block">
+          <%= link_to(@play_quest.title, "/question/#{@play_quest.id}", {class: "textbutton quest-list-title"}) %>
+          <p class="quest-list-caption"><%= @play_quest.caption %></p>
+        </div>
+      </li>
     </ul>
   <% else %>
     <p>受注しているクエストはありません</p>

@@ -10,4 +10,10 @@ class PlayQuestController < ApplicationController
     flash[:notice] = "このクエストに挑戦します"
     redirect_to("/mypage")
   end
+  def destroy
+    @play = PlayQuest.find_by(user_id: @current_user)
+    @play.destroy
+    flash[:notice] = "クエストへの挑戦をキャンセルしました"
+    redirect_to("/mypage")
+  end
 end

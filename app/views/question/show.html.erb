@@ -34,7 +34,15 @@
       <%= button_to "公開する", {controller: 'question', action: 'publish'}, {method: :post, class: "simplebutton"} %>
     <% end %>
   <% else %>
-    <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
+    <% if @play_quest %>
+      <% if @play_quest.quest_id == @quest.id %>
+        <%= button_to "挑戦をやめる", {controller: 'play_quest', action: 'destroy'}, {method: :post, class: "simplebutton"} %>
+      <% else %>
+        <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
+      <% end %>
+    <% else %>
+      <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
+    <% end %>
   <% end %>
 
 
