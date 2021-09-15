@@ -13,6 +13,12 @@ class QuestionController < ApplicationController
     @quest = Quest.new
     @published_quests = Quest.where(user_id: @current_user.id, publish: true).order(created_at: :desc)
     @not_published_quests = Quest.where(user_id: @current_user.id, publish: false).order(created_at: :desc)
+    @play = PlayQuest.where(user_id: @current_user.id).order(created_at: :desc)
+    @play_quests = []
+    @play.each do |play|
+      play_quest = Quest.find_by(id: play.quest_id)
+      @play_quests.push(play_quest)
+    end
   end
 
   def show
@@ -74,6 +80,17 @@ class QuestionController < ApplicationController
     @quest.publish = false
     @quest.save
     flash[:notice] = "クエストを非公開にしました"
+    redirect_to("/mypage")
+  end
+  def play
+    if PlayQuest.find_by(user_id: @current_user)
+      @play = PlayQuest.find_by(user_id: @current_user)
+      @play.quest_id = params[:id].to_i
+    else
+      @play = PlayQuest.new(user_id: @current_user.id, quest_id: params[:id])
+    end
+    @play.save
+    flash[:notice] = "このクエストに挑戦します"
     redirect_to("/mypage")
   end
 
