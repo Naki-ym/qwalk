@@ -31,10 +31,6 @@
             <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
             <p class="quest-list-caption"><%= quest.caption %></p>
           </div>
-          <div class="quest-list-creater">
-            <img src="<%= "/user_images/#{quest.user.image_name}" %>" class="creater-icon">
-            <%= link_to(quest.user.name, "/users/#{quest.user.id}", {class: "creater-name"}) %>
-          </div>
         </li>
       <% end %>
     </ul>
