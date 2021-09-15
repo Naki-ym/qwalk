@@ -6,7 +6,8 @@
     <p><%= @user.email %></p>
     <%= link_to("ユーザーデータの編集", "/users/#{@user.id}/edit", class: "textbutton") %>
     <%= link_to("ユーザーを削除", "/users/#{@user.id}/destroy", method: :post, class: "dangerbutton") %>
-  <% else %>
+  <% end %>
+  <% if @user.quests.size != 0 %>
     <ul class="simple-list">
       <% @user.quests.each do |quest| %>
         <li>
@@ -17,6 +18,8 @@
         </li>
       <% end %>
     </ul>
+  <% else %>
+    <p>公開中のクエストはありません</p>
   <% end %>
 
   <div class="buttons">
