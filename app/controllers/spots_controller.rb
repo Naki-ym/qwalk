@@ -46,6 +46,11 @@ class SpotsController < ApplicationController
     @spot = Spot.find_by(id: params[:id])
     @quest = Quest.find_by(id: @spot.quest_id)
     @spot.destroy
+    @spots = Spot.where(quest_id: @quest.id)
+    if @spots.size == 0
+      @quest.publish = false
+      @quest.save
+    end
     flash[:notice] = "地点を削除しました"
     redirect_to("/question/#{@quest.id}")
   end
