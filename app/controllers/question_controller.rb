@@ -6,7 +6,7 @@ class QuestionController < ApplicationController
 
   def top
     @quest = Quest.new
-    @quests = Quest.where(publish: true).order(created_at: :desc)
+    @quests = Quest.where(publish: true).where.not(user_id: @current_user.id).order(created_at: :desc)
   end
 
   def mypage
