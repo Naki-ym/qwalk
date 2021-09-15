@@ -1,8 +1,8 @@
 class QuestionController < ApplicationController
   #ログインしていないユーザーがアクセスできない
-  before_action :authenticate_user, {only: [:create, :newspot, :edit, :update, :destroy]}
+  before_action :authenticate_user, {only: [:create, :newspot, :edit, :update, :destroy, :publish, :unpublish]}
   #ログインしているユーザーと権限を持つユーザーが異なるときアクセスできない
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy, :publish, :unpublish]}
 
   def top
     @quest = Quest.new

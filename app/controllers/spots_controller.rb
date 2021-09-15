@@ -1,4 +1,9 @@
 class SpotsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user
+  #ログインしているユーザーと権限を持つユーザーが異なるときアクセスできない
+  before_action :ensure_correct_user, {only: [:show, :edit, :update, :destroy]}
+
   def new
     @spot = Spot.new
     @spot.lat = 35.6810208016824
@@ -53,5 +58,14 @@ class SpotsController < ApplicationController
     end
     flash[:notice] = "地点を削除しました"
     redirect_to("/question/#{@quest.id}")
+  end
+  def ensure_correct_user
+    spot = Spot.find_by(id: params[:id])
+    quest = Quest.find_by(id: spot.quest_id)
+    user = User.find_by(id: quest.user_id)
+    if @current_user.id != user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/question")
+    end
   end
 end
