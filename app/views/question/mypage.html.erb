@@ -1,6 +1,5 @@
 <div class="wrapper">
   <h1>マイクエスト</h1>
-  <h2>公開中</h2>
 
   <!-- モーダルを開くボタン -->
   <button class="js-open simplebutton">クエストを作る</button>
@@ -23,9 +22,10 @@
     <% end %>
   </div>
 
-  <% if @quests %>
+  <h2>未公開</h2>
+  <% if @not_published_quests.size != 0 %>
     <ul class="simple-list">
-      <% @quests.each do |quest|%>
+      <% @not_published_quests.each do |quest|%>
         <li class="quest-list">
           <div class="quest-list-block">
             <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
@@ -35,13 +35,27 @@
       <% end %>
     </ul>
   <% else %>
-    <p>公開しているクエストはありません。</p>
+    <p>非公開のクエストはありません</p>
+  <% end %>
+  
+  <h2>公開中</h2>
+  <% if @published_quests.size != 0 %>
+    <ul class="simple-list">
+      <% @published_quests.each do |quest|%>
+        <li class="quest-list">
+          <div class="quest-list-block">
+            <%= link_to(quest.title, "/question/#{quest.id}", {class: "textbutton quest-list-title"}) %>
+            <p class="quest-list-caption"><%= quest.caption %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>公開しているクエストはありません</p>
   <% end %>
 
-  <h2>未公開</h2>
-  <p>未公開のクエストはありません。</p>
   <h2>受注</h2>
-  <p>受注しているクエストはありません。</p>
+  <p>受注しているクエストはありません</p>
 </div>
 
 <script type="text/javascript">

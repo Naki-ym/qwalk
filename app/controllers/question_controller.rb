@@ -11,7 +11,8 @@ class QuestionController < ApplicationController
 
   def mypage
     @quest = Quest.new
-    @quests = Quest.where(user_id: @current_user.id).order(created_at: :desc)
+    @published_quests = Quest.where(user_id: @current_user.id, publish: true).order(created_at: :desc)
+    @not_published_quests = Quest.where(user_id: @current_user.id, publish: false).order(created_at: :desc)
   end
 
   def show
@@ -65,7 +66,7 @@ class QuestionController < ApplicationController
       @quest.publish = true
       @quest.save
       flash[:notice] = "クエストを公開しました"
-      redirect_to("/question")
+      redirect_to("/mypage")
     end
   end
   def unpublish
