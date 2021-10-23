@@ -20,6 +20,7 @@ class PlayQuestController < ApplicationController
     if PlayQuest.find_by(user_id: @current_user)
       @play = PlayQuest.find_by(user_id: @current_user)
       @quest = Quest.find_by(id: @play.quest_id)
+      @spots = Spot.where(quest_id: @quest.id).order(created_at: :asc)
     else
       flash[:notice] = "クエストを受注してください"
       redirect_to("/mypage")

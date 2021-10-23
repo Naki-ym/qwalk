@@ -39,6 +39,9 @@ gem 'rails-i18n'
 #パスワード暗号化
 gem 'bcrypt'
 
+#controller内の変数をJavascript内で使う
+gem 'gon'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
