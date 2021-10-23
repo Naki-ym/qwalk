@@ -1,5 +1,5 @@
 class PlayQuestController < ApplicationController
-  def play
+  def challenge
     if PlayQuest.find_by(user_id: @current_user)
       @play = PlayQuest.find_by(user_id: @current_user)
       @play.quest_id = params[:id].to_i

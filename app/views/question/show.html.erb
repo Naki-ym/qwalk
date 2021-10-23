@@ -38,10 +38,10 @@
       <% if @play_quest.quest_id == @quest.id %>
         <%= button_to "挑戦をやめる", {controller: 'play_quest', action: 'destroy'}, {method: :post, class: "simplebutton"} %>
       <% else %>
-        <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
+        <%= button_to "挑戦する", {controller: 'play_quest', action: 'challenge'}, {method: :post, class: "simplebutton"} %>
       <% end %>
     <% else %>
-      <%= button_to "挑戦する", {controller: 'play_quest', action: 'play'}, {method: :post, class: "simplebutton"} %>
+      <%= button_to "挑戦する", {controller: 'play_quest', action: 'challenge'}, {method: :post, class: "simplebutton"} %>
     <% end %>
   <% end %>
 
