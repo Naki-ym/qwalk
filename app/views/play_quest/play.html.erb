@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <%= form_tag("/spots/create") do %>
+    <h1><%= @quest.title %></h1>
+    <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+    <div class="buttons">
+      <%= link_to("戻る", :back, {class: "simplebutton"}) %>
+    </div>
+  <% end %>
+  
+</div>
+
+<script type="text/javascript">
+  var lat = '<%== JSON.dump(@spot.lat) %>';
+  var lng = '<%== JSON.dump(@spot.lng) %>';
+  var map;
+  function initMap() {
+    var opts = {
+      zoom: 14,
+      center: new google.maps.LatLng(35.6810208016824, 139.7674398589082),
+      streetViewControl: false,
+      mapTypeControl: false
+    };
+    map = new google.maps.Map(document.getElementById("map"), opts);
+    map.addListener('drag', dispLatLng);
+  }
+  function dispLatLng(){
+    var latlng = map.getCenter();
+    var lat = latlng.lat();
+    var lng = latlng.lng();
+    document.getElementById("lat").innerHTML = lat;
+    document.getElementById("lng").innerHTML = lng;
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>

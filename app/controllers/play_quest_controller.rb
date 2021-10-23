@@ -16,4 +16,13 @@ class PlayQuestController < ApplicationController
     flash[:notice] = "クエストへの挑戦をキャンセルしました"
     redirect_to("/mypage")
   end
+  def play
+    if PlayQuest.find_by(user_id: @current_user)
+      @play = PlayQuest.find_by(user_id: @current_user)
+      @quest = Quest.find_by(id: @play.quest_id)
+    else
+      flash[:notice] = "クエストを受注してください"
+      redirect_to("/mypage")
+    end
+  end
 end

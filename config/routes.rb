@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
   
   get "mypage" => "question#mypage"
+
+  get "play" => "play_quest#play"
   
   get "question" => "question#top"
   get "question/create" => "question#top"
