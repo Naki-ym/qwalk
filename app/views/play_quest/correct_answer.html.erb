@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <h1><%= @quest.title %></h1>
+  <h2>正解</h2>
+  <% @spots.each do |spot| %>
+    <%= spot.clear %>
+  <% end %>
+
+  <div class="buttons">
+    <%= link_to("次へ", "/play", {class: "simplebutton"}) %>
+  </div>
+</div>

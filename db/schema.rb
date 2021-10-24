@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_135052) do
+ActiveRecord::Schema.define(version: 2021_10_23_124728) do
 
   create_table "play_quests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "quest_id"
+    t.boolean "clear", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "play_spots", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "spot_id", null: false
+    t.integer "play_quest_id", null: false
     t.boolean "clear", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

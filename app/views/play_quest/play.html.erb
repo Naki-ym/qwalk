@@ -1,12 +1,16 @@
 <div class="wrapper">
-  <%= form_tag("/spots/create") do %>
+  <%= form_tag("/play/answer-check") do %>
     <h1><%= @quest.title %></h1>
+    <h2>Q.<%= @spot.q_text %></h2>
+    <h2><%= @spots.first.clear %></h2>
     <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+    <p>A.</p>
+    <textarea name="user_answer"></textarea>
     <div class="buttons">
       <%= link_to("戻る", :back, {class: "simplebutton"}) %>
+      <input type="submit" value="答え合わせ" class="simplebutton">
     </div>
   <% end %>
-  
 </div>
 
 <script type="text/javascript">
@@ -16,19 +20,17 @@
   function initMap() {
     var opts = {
       zoom: 14,
-      center: new google.maps.LatLng(35.6810208016824, 139.7674398589082),
-      streetViewControl: false,
+      center: new google.maps.LatLng(lat, lng),
       mapTypeControl: false
     };
     map = new google.maps.Map(document.getElementById("map"), opts);
-    map.addListener('drag', dispLatLng);
-  }
-  function dispLatLng(){
-    var latlng = map.getCenter();
-    var lat = latlng.lat();
-    var lng = latlng.lng();
-    document.getElementById("lat").innerHTML = lat;
-    document.getElementById("lng").innerHTML = lng;
+
+    var spotLatlng = new google.maps.LatLng(lat, lng);
+    var marker = new google.maps.Marker({
+      position: spotLatlng,
+      map: map,
+      title:"Here!"
+    });
   }
 </script>
 <script async defer

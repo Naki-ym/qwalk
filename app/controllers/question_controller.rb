@@ -13,7 +13,7 @@ class QuestionController < ApplicationController
     @quest = Quest.new
     @published_quests = Quest.where(user_id: @current_user.id, publish: true).order(created_at: :desc)
     @not_published_quests = Quest.where(user_id: @current_user.id, publish: false).order(created_at: :desc)
-    @play = PlayQuest.find_by(user_id: @current_user.id)
+    @play = PlayQuest.find_by(user_id: @current_user.id, clear: false)
     if @play
       @play_quest = Quest.find_by(id: @play.quest_id)
     end
@@ -23,7 +23,7 @@ class QuestionController < ApplicationController
     @quest = Quest.find_by(id: params[:id])
     @spots = Spot.where(quest_id: @quest.id)
     @user = @quest.user
-    @play_quest = PlayQuest.find_by(user_id: @current_user.id)
+    @play_quest = PlayQuest.find_by(user_id: @current_user.id, clear: false)
   end
   def create
     @quest = Quest.new(title: params[:title], caption: params[:caption], user_id: @current_user.id)

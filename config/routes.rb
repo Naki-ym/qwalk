@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "mypage" => "question#mypage"
 
   get "play" => "play_quest#play"
+  get "play/correct" => "play_quest#correct_answer" 
+  post "play/answer-check" => "play_quest#answer_check"
   
   get "question" => "question#top"
   get "question/create" => "question#top"
