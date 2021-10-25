@@ -58,7 +58,7 @@ class QuestionController < ApplicationController
     @spots.destroy_all
     @quest.destroy
     flash[:notice] = "クエストを削除しました"
-    redirect_to("/question")
+    redirect_to("/mypage")
   end
   def publish
     @quest = Quest.find_by(id: params[:id])
