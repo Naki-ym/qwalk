@@ -2,12 +2,10 @@
   <%= form_tag("/play/answer-check") do %>
     <h1><%= @quest.title %></h1>
     <h2>Q.<%= @spot.q_text %></h2>
-    <h2><%= @spots.first.clear %></h2>
     <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
     <p>A.</p>
     <textarea name="user_answer"></textarea>
     <div class="buttons">
-      <%= link_to("戻る", :back, {class: "simplebutton"}) %>
       <input type="submit" value="答え合わせ" class="simplebutton">
     </div>
   <% end %>
@@ -34,5 +32,5 @@
   }
 </script>
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyALeBIo8CDfnaFoJyi_VSdT4-e8Fv6CDo8&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
