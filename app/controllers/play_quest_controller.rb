@@ -42,9 +42,8 @@ class PlayQuestController < ApplicationController
     @play_spot = PlaySpot.find_by(id: @spots.first.id, clear: false, deleted: false)
     @spot = Spot.find_by(id: @play_spot.spot_id)
     if @spot.answer == params[:user_answer]
-      @correct_spot = PlaySpot.find_by(id: @spots.first.id, clear: false, deleted: false)
-      @correct_spot.clear = true
-      @correct_spot.save
+      @play_spot.clear = true
+      @play_spot.save
       flash[:notice] = "正解！"
       @spots = PlaySpot.where(play_quest_id: @play.id, clear: false, deleted: false).order(created_at: :asc)
       if @spots.size > 0
