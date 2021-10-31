@@ -22,7 +22,6 @@
         <% end %>
         <ul class="header-list">
           <% if session[:user_id] %>
-            <li><%= link_to("ユーザー一覧", "/users") %></li>
             <li><%= link_to("クエストを探す", "/question") %></li>
             <li><%= link_to("挑戦する", "/play") %></li>
             <li><%= link_to("マイページ", "/mypage") %></li>

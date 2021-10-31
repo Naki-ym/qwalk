@@ -22,10 +22,9 @@
     <p>公開中のクエストはありません</p>
   <% end %>
 
-  <div class="buttons">
+  <% if @user.id == @current_user.id %>
+    <%= button_to "ログアウト", {controller: 'users', action: 'logout'}, {method: :post, class: "simplebutton"} %>
+  <% else %>
     <%= button_to "戻る", :back, {method: :get, class: "simplebutton"} %>
-    <% if @user.id == @current_user.id %>
-      <%= button_to "ログアウト", {controller: 'users', action: 'logout'}, {method: :post, class: "simplebutton"} %>
-    <% end %>
-  </div>
+  <% end %>
 </div>
