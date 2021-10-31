@@ -66,4 +66,9 @@ class PlayQuestController < ApplicationController
     @spot = Spot.find_by(id: @cleared_spots.first.spot_id)
     @quest_spots = Spot.where(quest_id: @quest.id)
   end
+
+  def quest_clear
+    @play_quests = PlayQuest.where(user_id: @current_user, deleted: false).order(created_at: :desc)
+    @play = @play_quests.first
+  end
 end

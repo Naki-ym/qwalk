@@ -194,6 +194,16 @@ textarea {
   justify-content: center;
 }
 
+.center_box {
+  position: static;
+  width: 100%;
+  height: calc(100vh - 70px); /* headerの下の余白分だけ戻す */
+  font-size: 30px;
+  display: flex;
+  align-items: center; /* 縦方向中央揃え */
+  justify-content: center; /* 横方向中央揃え */
+}
+
 .success-message {
   width: 50vw;
   margin: 0 auto;

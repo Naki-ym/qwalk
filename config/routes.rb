@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get "mypage" => "question#mypage"
 
   get "play" => "play_quest#play"
-  get "play/correct" => "play_quest#correct_answer" 
+  get "play/correct" => "play_quest#correct_answer"
+  get "clear" => "play_quest#quest_clear"
   post "play/answer-check" => "play_quest#answer_check"
   
   get "question" => "question#top"
@@ -41,6 +42,4 @@ Rails.application.routes.draw do
       resources :users
     end
   end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

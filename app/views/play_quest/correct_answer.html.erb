@@ -5,7 +5,7 @@
 
   <div class="buttons">
     <% if @cleared_spots.size == @quest_spots.size %>
-      <%= link_to("次へ", "/question", {class: "simplebutton"}) %>
+      <%= link_to("次へ", "/clear", {class: "simplebutton"}) %>
     <%  else%>
       <%= link_to("次の問題へ", "/play", {class: "simplebutton"}) %>
     <% end %>
