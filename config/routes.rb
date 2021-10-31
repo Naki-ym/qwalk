@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
+  get "users/create" => "users#index"
   get "users" => "users#userlist"
   get "users/:id" => "users#show"
   get "users/:id/edit" => "users#edit"

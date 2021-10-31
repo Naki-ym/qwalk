@@ -14,6 +14,11 @@
  *= require_self
  */
 
+
+* {
+  font-family:"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+}
+
 .wrapper {
   width: 50%;
   margin: 0 auto;
@@ -171,17 +176,6 @@ header {
 .form {
   margin-top: 20px;
   text-align: left;
-}
-
-textarea {
-  resize: vertical;
-  padding: 10px;
-  font-size: 20px;
-  width: 100%;
-  background-color: rgb(245, 245, 245);
-  outline: none;
-  border: none;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
 }
 
 .textbox {

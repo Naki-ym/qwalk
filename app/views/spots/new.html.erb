@@ -3,16 +3,16 @@
     <h1>地点の追加</h1>
     <div class="form">
       <h2>表示</h2>
-      <p>テキスト</p>
-      <textarea name="q_text"><%= @spot.q_text %></textarea>
-      <p>画像</p>
+      <h3>テキスト</h3>
+      <textarea name="q_text" class="textbox"><%= @spot.q_text %></textarea>
+      <h3>画像</h3>
       <button>画像をアップロード</button>
       <h2>答え</h2>
-      <textarea name="answer"><%= @spot.answer %></textarea>
+      <input name="answer" value="<%= @spot.answer %>" class="textbox">
       <h2>正解時に表示</h2>
-      <p>テキスト</p>
-      <textarea name="a_text"><%= @spot.a_text %></textarea>
-      <p>正解時に表示する画像</p>
+      <h3>テキスト</h3>
+      <textarea name="a_text" class="textbox"><%= @spot.a_text %></textarea>
+      <h3>正解時に表示する画像</h3>
       <button>画像をアップロード</button>
       <h2 class="form-item">問題の設置場所</h2>
       <div class="cross_wrap">
