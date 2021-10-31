@@ -1,8 +1,13 @@
 <div class="wrapper">
   <h1><%= @quest.title %></h1>
-  <h2>正解</h2>
+  <h2>正解!!</h2>
+  <p><%= @spot.a_text %></p>
 
   <div class="buttons">
-    <%= link_to("次へ", "/play", {class: "simplebutton"}) %>
+    <% if @cleared_spots.size == @quest_spots.size %>
+      <%= link_to("次へ", "/question", {class: "simplebutton"}) %>
+    <%  else%>
+      <%= link_to("次の問題へ", "/play", {class: "simplebutton"}) %>
+    <% end %>
   </div>
 </div>

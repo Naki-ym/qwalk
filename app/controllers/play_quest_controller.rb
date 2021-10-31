@@ -44,15 +44,13 @@ class PlayQuestController < ApplicationController
     if @spot.answer == params[:user_answer]
       @play_spot.clear = true
       @play_spot.save
-      flash[:notice] = "正解！"
       @spots = PlaySpot.where(play_quest_id: @play.id, clear: false, deleted: false).order(created_at: :asc)
       if @spots.size > 0
         redirect_to("/play/correct")
       else
         @play.clear = true
         @play.save
-        flash[:notice] = "クエストクリア！"
-        redirect_to("/mypage")
+        redirect_to("/play/correct")
       end
     else
       flash[:notice] = "不正解..."
@@ -61,8 +59,11 @@ class PlayQuestController < ApplicationController
   end
 
   def correct_answer
-    @spots = PlaySpot.all
-    @play = PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
+    @play_quests = PlayQuest.where(user_id: @current_user, deleted: false).order(created_at: :desc)
+    @play = @play_quests.first
     @quest = Quest.find_by(id: @play.quest_id)
+    @cleared_spots = PlaySpot.where(play_quest_id: @play.id, clear: true, deleted: false).order(created_at: :desc)
+    @spot = Spot.find_by(id: @cleared_spots.first.spot_id)
+    @quest_spots = Spot.where(quest_id: @quest.id)
   end
 end
