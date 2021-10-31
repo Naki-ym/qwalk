@@ -1,6 +1,6 @@
 class PlayQuestController < ApplicationController
   def challenge
-    if PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
+    if PlayQuest.find_by(user_id: @current_user, clear_flg: false, delete_flg: false)
       @play = PlayQuest.find_by(user_id: @current_user)
       @play.quest_id = params[:id].to_i
     else
@@ -16,17 +16,17 @@ class PlayQuestController < ApplicationController
     redirect_to("/mypage")
   end
   def destroy
-    @play = PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
-    @play.deleted = true
+    @play = PlayQuest.find_by(user_id: @current_user, clear_flg: false, delete_flg: false)
+    @play.delete_flg = true
     @play.save
     flash[:notice] = "クエストへの挑戦をキャンセルしました"
     redirect_to("/mypage")
   end
   def play
-    if PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
-      @play = PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
+    if PlayQuest.find_by(user_id: @current_user, clear_flg: false, delete_flg: false)
+      @play = PlayQuest.find_by(user_id: @current_user, clear_flg: false, delete_flg: false)
       @quest = Quest.find_by(id: @play.quest_id)
-      @spots = PlaySpot.where(play_quest_id: @play.id, clear: false, deleted: false).order(created_at: :asc)
+      @spots = PlaySpot.where(play_quest_id: @play.id, clear_flg: false, delete_flg: false).order(created_at: :asc)
       @spot = Spot.find_by(id: @spots.first.spot_id)
       if @spots.size <= 0
         redirect_to("/")
@@ -37,18 +37,18 @@ class PlayQuestController < ApplicationController
     end
   end
   def answer_check
-    @play = PlayQuest.find_by(user_id: @current_user, clear: false, deleted: false)
-    @spots = PlaySpot.where(play_quest_id: @play.id, clear: false, deleted: false).order(created_at: :asc)
-    @play_spot = PlaySpot.find_by(id: @spots.first.id, clear: false, deleted: false)
+    @play = PlayQuest.find_by(user_id: @current_user, clear_flg: false, delete_flg: false)
+    @spots = PlaySpot.where(play_quest_id: @play.id, clear_flg: false, delete_flg: false).order(created_at: :asc)
+    @play_spot = PlaySpot.find_by(id: @spots.first.id, clear_flg: false, delete_flg: false)
     @spot = Spot.find_by(id: @play_spot.spot_id)
     if @spot.answer == params[:user_answer]
-      @play_spot.clear = true
+      @play_spot.clear_flg = true
       @play_spot.save
-      @spots = PlaySpot.where(play_quest_id: @play.id, clear: false, deleted: false).order(created_at: :asc)
+      @spots = PlaySpot.where(play_quest_id: @play.id, clear_flg: false, delete_flg: false).order(created_at: :asc)
       if @spots.size > 0
         redirect_to("/play/correct")
       else
-        @play.clear = true
+        @play.clear_flg = true
         @play.save
         redirect_to("/play/correct")
       end
@@ -59,16 +59,16 @@ class PlayQuestController < ApplicationController
   end
 
   def correct_answer
-    @play_quests = PlayQuest.where(user_id: @current_user, deleted: false).order(created_at: :desc)
+    @play_quests = PlayQuest.where(user_id: @current_user, delete_flg: false).order(created_at: :desc)
     @play = @play_quests.first
     @quest = Quest.find_by(id: @play.quest_id)
-    @cleared_spots = PlaySpot.where(play_quest_id: @play.id, clear: true, deleted: false).order(created_at: :desc)
+    @cleared_spots = PlaySpot.where(play_quest_id: @play.id, clear_flg: true, delete_flg: false).order(created_at: :desc)
     @spot = Spot.find_by(id: @cleared_spots.first.spot_id)
     @quest_spots = Spot.where(quest_id: @quest.id)
   end
 
   def quest_clear
-    @play_quests = PlayQuest.where(user_id: @current_user, deleted: false).order(created_at: :desc)
+    @play_quests = PlayQuest.where(user_id: @current_user, delete_flg: false).order(created_at: :desc)
     @play = @play_quests.first
   end
 end
