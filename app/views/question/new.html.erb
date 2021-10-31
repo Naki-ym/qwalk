@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <%= form_tag("/question/create") do %>
+    <h1>クエスト作成</h1>
+    <div class="form">
+      <div class="form-item">
+        <p>クエスト名</p>
+        <input name="title" value="<%= @quest.title %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <p>説明文</p>
+        <input name="caption" value="<%= @quest.caption %>" class="textbox">
+      </div>
+      <div class="buttons">
+        <%= link_to("キャンセル", "/mypage", {class: "simplebutton"}) %>
+        <input type="submit" value="作成" class="simplebutton">
+      </div>
+    </div>
+  <% end %>
+</div>

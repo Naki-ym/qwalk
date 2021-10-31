@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post "play/answer-check" => "play_quest#answer_check"
   
   get "question" => "question#top"
-  get "question/create" => "question#top"
+  get "question/create" => "question#new"
   get "question/:id" => "question#show"
   get "question/:id/newspot" => "spots#new"
   get "question/:id/edit" => "question#edit"

@@ -3,9 +3,9 @@
   <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
     <div class="form">
       <h2>ユーザー名</h2>
-      <textarea name="name"><%= @user.name %></textarea>
+      <input name="name" value="<%= @user.name %>" class="textbox">
       <h2>メールアドレス</h2>
-      <textarea name="email"><%= @user.email %></textarea>
+      <input name="email" value="<%= @user.email %>" class="textbox">
       <h2>ユーザーアイコン</h2>
       <input name="image" type="file">
       <div class="buttons">

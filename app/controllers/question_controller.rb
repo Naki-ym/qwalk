@@ -10,13 +10,17 @@ class QuestionController < ApplicationController
   end
 
   def mypage
-    @quest = Quest.new
+    # @quest = Quest.new
     @published_quests = Quest.where(user_id: @current_user.id, publish: true).order(created_at: :desc)
     @not_published_quests = Quest.where(user_id: @current_user.id, publish: false).order(created_at: :desc)
     @play = PlayQuest.find_by(user_id: @current_user.id, clear_flg: false, delete_flg: false)
     if @play
       @play_quest = Quest.find_by(id: @play.quest_id)
     end
+  end
+
+  def new
+    @quest = Quest.new
   end
 
   def show

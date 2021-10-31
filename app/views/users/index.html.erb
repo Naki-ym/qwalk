@@ -1,25 +1,20 @@
 <div class="wrapper">
-  <% @user.errors.full_messages.each do |message| %>
-    <div class="error-message">
-      <%= message %>
-    </div>
-  <% end %>
-
   <h1>新規登録</h1>
   <%= form_tag("/users/create") do %>
     <div class="form">
       <div class="form-item">
         <p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
+        <input name="name" value="<%= @user.name %>" class="textbox">
       </div>
       <div class="form-item">
         <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>">
+        <input name="email" value="<%= @user.email %>" class="textbox">
       </div>
       <div class="form-item">
         <p>パスワード</p>
-        <input name="password" type="password">
+        <input name="password" type="password" class="textbox">
       </div>
     </div>
     <input type="submit" value="新規登録" class="simplebutton">
   <% end %>
+</div>
