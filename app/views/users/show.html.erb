@@ -25,6 +25,6 @@
   <% if @user.id == @current_user.id %>
     <%= button_to "ログアウト", {controller: 'users', action: 'logout'}, {method: :post, class: "simplebutton"} %>
   <% else %>
-    <%= button_to "戻る", :back, {method: :get, class: "simplebutton"} %>
+    <%= button_to "戻る", "javascript:history.back()", {method: :get, class: "simplebutton"} %>
   <% end %>
 </div>
