@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
   #ログインしていないユーザーがアクセスできない
-  before_action :authenticate_user, {only: [:create, :newspot, :edit, :update, :destroy, :publish, :unpublish]}
+  before_action :authenticate_user, {only: [:new, :create, :newspot, :edit, :update, :destroy, :publish, :unpublish]}
   #ログインしているユーザーと権限を持つユーザーが異なるときアクセスできない
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy, :publish, :unpublish]}
 
@@ -89,7 +89,7 @@ class QuestionController < ApplicationController
   def ensure_correct_user
     @quest = Quest.find_by(id: params[:id])
     if @quest.user_id != @current_user.id
-      flash[:notice] = "権限がありません"
+      flash[:error_message] = "権限がありません"
       redirect_to("/question")
     end
   end

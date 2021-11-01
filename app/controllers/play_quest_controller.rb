@@ -32,7 +32,7 @@ class PlayQuestController < ApplicationController
         redirect_to("/")
       end
     else
-      flash[:notice] = "挑戦するクエストを選択してください"
+      flash[:error_message] = "挑戦するクエストを選択してください"
       redirect_to("/mypage")
     end
   end
@@ -53,7 +53,7 @@ class PlayQuestController < ApplicationController
         redirect_to("/play/correct")
       end
     else
-      flash[:notice] = "不正解..."
+      flash[:error_message] = "不正解..."
       redirect_to("/play")
     end
   end

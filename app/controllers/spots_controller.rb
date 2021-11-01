@@ -64,7 +64,7 @@ class SpotsController < ApplicationController
     quest = Quest.find_by(id: spot.quest_id)
     user = User.find_by(id: quest.user_id)
     if @current_user.id != user.id
-      flash[:notice] = "権限がありません"
+      flash[:error_message] = "権限がありません"
       redirect_to("/question")
     end
   end

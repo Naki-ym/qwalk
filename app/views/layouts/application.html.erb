@@ -41,6 +41,11 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
+    <% if flash[:error_message] %>
+      <div class="error-message">
+        <%= flash[:error_message] %>
+      </div>
+    <% end %>
     <% if @error_message %>
       <div class="error-message">
         <%= @error_message %>
