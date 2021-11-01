@@ -17,6 +17,7 @@
 
 * {
   font-family:"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+  box-sizing: border-box;
 }
 
 .wrapper {

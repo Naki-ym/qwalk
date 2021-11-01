@@ -36,7 +36,7 @@ class QuestionController < ApplicationController
       redirect_to("/mypage")
     else
       @quests = Quest.all.order(created_at: :desc)
-      render("question/mypage")
+      render("question/new")
     end
   end
   def newspot
